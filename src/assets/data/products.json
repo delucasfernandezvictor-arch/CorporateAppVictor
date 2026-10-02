@@ -1,0 +1,6 @@
+[
+  { "id": 1, "nombre": "Portátil Dell", "unidades": 12, "precio": 1200, "foto": "assets/images/dell.jpg", "vendedor": "Tecnomarket" },
+  { "id": 2, "nombre": "Monitor LG", "unidades": 8, "precio": 299, "foto": "assets/images/lg.jpg", "vendedor": "PC Center" },
+  { "id": 3, "nombre": "Teclado Logitech", "unidades": 25, "precio": 59, "foto": "assets/images/logitech.jpg", "vendedor": "Tecnomarket" },
+  { "id": 4, "nombre": "Ratón Razer", "unidades": 30, "precio": 45, "foto": "assets/images/razer.jpg", "vendedor": "Gaming Store" }
+]
