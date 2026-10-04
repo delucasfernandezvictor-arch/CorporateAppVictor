@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="160" height="110" viewBox="0 0 160 110" role="img" aria-label="Monitor LG">
+  <rect width="160" height="110" rx="10" fill="#f5f2ff"/>
+  <rect x="24" y="14" width="112" height="70" rx="6" fill="#232323"/>
+  <rect x="32" y="22" width="96" height="54" rx="2" fill="#b9a7ff"/>
+  <rect x="73" y="84" width="14" height="12" fill="#4a4a4a"/>
+  <rect x="55" y="96" width="50" height="6" rx="3" fill="#4a4a4a"/>
+  <text x="80" y="56" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="700" fill="#ffffff">LG</text>
+</svg>

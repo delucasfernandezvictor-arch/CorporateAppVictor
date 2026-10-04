@@ -9,13 +9,15 @@
       <ion-col>Foto</ion-col>
     </ion-row>
 
-    <ion-row *ngFor="let product of products()">
+    @for (product of products(); track product.id) {
+    <ion-row>
       <ion-col>{{product.id}}</ion-col>
       <ion-col>{{product.nombre}}</ion-col>
       <ion-col>{{product.unidades}}</ion-col>
       <ion-col>{{product.precio}} €</ion-col>
       <ion-col>{{product.vendedor}}</ion-col>
-      <ion-col><img [src]="product.foto" width="80"></ion-col>
+      <ion-col><img [src]="product.foto" width="80" [alt]="product.nombre"></ion-col>
     </ion-row>
+    }
   </ion-grid>
 </ion-content>

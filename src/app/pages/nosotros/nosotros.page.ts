@@ -1,19 +1,63 @@
-import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular';
+import { Component, OnInit, inject, signal } from '@angular/core';
+import { DecimalPipe } from '@angular/common';
+import {
+  IonButton,
+  IonCard,
+  IonCardContent,
+  IonCardHeader,
+  IonCardTitle,
+  IonContent,
+  IonHeader,
+  IonText,
+  IonTitle,
+  IonToolbar,
+} from '@ionic/angular';
+import { GeolocationService } from '../../services/geolocation.service';
 
 @Component({
   selector: 'app-nosotros',
   templateUrl: './nosotros.page.html',
   styleUrls: ['./nosotros.page.scss'],
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
+  imports: [
+    DecimalPipe,
+    IonButton,
+    IonCard,
+    IonCardContent,
+    IonCardHeader,
+    IonCardTitle,
+    IonContent,
+    IonHeader,
+    IonText,
+    IonTitle,
+    IonToolbar,
+  ],
 })
 export class NosotrosPage implements OnInit {
+  private readonly geolocationService = inject(GeolocationService);
+  private readonly oficinaLat = 40.4452;
+  private readonly oficinaLon = -3.6115;
 
-  constructor() { }
+  distancia = signal<number | null>(null);
+  error = signal('');
 
-  ngOnInit() {
+  async ngOnInit() {
+    await this.obtenerDistancia();
   }
 
+  async obtenerDistancia() {
+    try {
+      this.error.set('');
+      const coords = await this.geolocationService.getCurrentPosition();
+      const distancia = this.geolocationService.calcularDistancia(
+        coords.latitude,
+        coords.longitude,
+        this.oficinaLat,
+        this.oficinaLon,
+      );
+
+      this.distancia.set(distancia);
+    } catch {
+      this.error.set('No se pudo obtener la geolocalización del dispositivo.');
+    }
+  }
 }

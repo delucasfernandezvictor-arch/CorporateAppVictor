@@ -1,13 +1,37 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>contacto</ion-title>
+    <ion-title>Contacto</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">contacto</ion-title>
+      <ion-title size="large">Contacto</ion-title>
     </ion-toolbar>
   </ion-header>
+
+  <ion-item>
+    <ion-label position="stacked">Correo electrónico</ion-label>
+    <ion-input [(ngModel)]="correo" type="email" placeholder="Correo"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">Mensaje</ion-label>
+    <ion-textarea [(ngModel)]="mensaje" placeholder="Mensaje"></ion-textarea>
+  </ion-item>
+
+  <ion-button expand="block" (click)="enviar()">Enviar</ion-button>
+
+  @if (enviado()) {
+  <ion-text color="success">
+    <p>Mensaje guardado correctamente.</p>
+  </ion-text>
+  }
+
+  @if (error()) {
+  <ion-text color="danger">
+    <p>{{ error() }}</p>
+  </ion-text>
+  }
 </ion-content>
