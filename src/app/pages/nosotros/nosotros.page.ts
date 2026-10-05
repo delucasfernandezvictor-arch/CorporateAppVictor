@@ -56,8 +56,10 @@ export class NosotrosPage implements OnInit {
       );
 
       this.distancia.set(distancia);
-    } catch {
-      this.error.set('No se pudo obtener la geolocalización del dispositivo.');
+        } catch (e: any) {
+      this.error.set(
+        'No se pudo obtener la geolocalización: ' + (e?.message ?? e),
+      );
     }
   }
 }

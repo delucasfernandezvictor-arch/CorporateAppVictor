@@ -1,12 +1,20 @@
 import { Injectable } from '@angular/core';
+import { Capacitor } from '@capacitor/core';
 import { Geolocation } from '@capacitor/geolocation';
 
 @Injectable({ providedIn: 'root' })
 export class GeolocationService {
-  async getCurrentPosition() {
-    const data = await Geolocation.getCurrentPosition();
-    return data.coords;
+ async getCurrentPosition() {
+  if (Capacitor.isNativePlatform()) {
+    await Geolocation.requestPermissions();
   }
+  const data = await Geolocation.getCurrentPosition({
+    enableHighAccuracy: true,
+    timeout: 30000,
+    maximumAge: 60000,
+  });
+  return data.coords;
+}
 
   calcularDistancia(lat1: number, lon1: number, lat2: number, lon2: number) {
     const radioTierra = 6371;
